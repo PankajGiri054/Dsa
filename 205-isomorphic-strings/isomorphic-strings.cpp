@@ -6,24 +6,15 @@ public:
         if(l1!=l2){
 return false;
         }
-        unordered_map<char,char>hash1;
-        unordered_map<char,char>hash2;
-        for(int i=0;i<l1;i++){
-if(hash1.count(s[i])){
-    if(hash1[s[i]]!=t[i]){
+        vector<int>sindex(256,-1);
+        vector<int>tindex(256,-1);
+       for(int i=0;i<l1;i++){
+    if(sindex[s[i]]!=tindex[t[i]]){
         return false;
-    }}
-    else{
-        hash1[s[i]]=t[i];
     }
-if(hash2.count(t[i])){
-    if(hash2[t[i]]!=s[i]){
-        return false;
-    }}
-    else{
-        hash2[t[i]]=s[i];
-    }   
-        }
+    sindex[s[i]]=i;
+    tindex[t[i]]=i;
+       }
         return true;
     }
 };
