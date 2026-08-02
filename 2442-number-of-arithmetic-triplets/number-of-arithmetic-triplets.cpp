@@ -4,14 +4,18 @@ public:
         int n=nums.size();
         int count=0;
        for(int i=0;i<n;i++){
+        bool first=false;
+        bool second =false;
         for(int j=i+1;j<n;j++){
-            for(int k=j+1;k<n;k++){
-        int diff1=nums[j]-nums[i];
-        int diff2=nums[k]-nums[j];
-        if(diff1==diff&&diff2==diff){
-            count++;
+      if(nums[j]==nums[i]+diff){
+        first=true;
+      }
+    if(nums[j]==nums[i]+2*diff){
+        second=true;
+    }
         }
-            }
+        if(first&&second){
+            count++;
         }
        }
         return count;
